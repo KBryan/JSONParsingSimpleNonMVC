@@ -11,29 +11,29 @@ import Alamofire
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController ,MKMapViewDelegate, CLLocationManagerDelegate {
+class ViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
+    
+    @IBOutlet weak var mapView: MKMapView!
+    var locationManager = CLLocationManager()
     
     var mapPins = [MapPin]()
     
-    @IBOutlet weak var mapView: MKMapView!
-    
-    var locationManager = CLLocationManager()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mapView.delegate = self
         let url = NSURL(string: API_URL)
         var lati:Double = 0.0
         var long:Double = 0.0
         var stationName:String = ""
-        
-        // Location manager code
+        // lacation manager code
         self.locationManager.delegate = self
         self.mapView.delegate = self
+        // start updating location
         self.locationManager.startUpdatingLocation()
         self.locationManager.requestWhenInUseAuthorization()
         self.mapView.showsUserLocation = true
         
+      
         /// Alamofire API
         Alamofire.request(.GET, url!).responseJSON { (response) -> Void in
             // return the value of .Get Request
@@ -58,10 +58,7 @@ class ViewController: UIViewController ,MKMapViewDelegate, CLLocationManagerDele
                         //print("End of Data Set")
                         let pin = MapPin(coordinate:CLLocationCoordinate2D(latitude: lati, longitude: long) , title: stationName, subtitle: "Set Name")
                         self.mapPins.append(pin)
-                        print(self.mapPins)
-                        for map in self.mapPins {
-                            self.mapView.addAnnotation(map)
-                        }
+                        self.mapView.addAnnotation(pin)
                     }
 
                 }
