@@ -2,7 +2,7 @@
 import UIKit
 import MapKit
 
-class MapPin: NSObject, MKAnnotation {
+final class MapPin: NSObject, MKAnnotation {
     
     var coordinate:CLLocationCoordinate2D
     var title:String?

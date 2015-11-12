@@ -41,33 +41,22 @@ class ViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelega
             if let dict = result.value as? Dictionary<String,AnyObject> {
                 print(dict)
                 if let routes = dict["locations"] as? NSArray
-            
                 {
-                    for route in routes {
-                          guard let name = route["name"] as? String,
-                                let lat = route["lat"] as? Double,
-                                let lng = route["lng"] as? Double else {
-                                print("error")
-                                return
-                        }
-
-                        stationName = name
-                        lati = lat
-                        long = lng
+                    let _ = routes.map { route  in
+                        stationName = (route["name"] as? String)!
+                        lati = (route["lat"] as? Double)!
+                        long = (route["lng"]  as? Double)!
                         let pin = MapPin(coordinate:CLLocationCoordinate2D(latitude: lati, longitude: long) , title: stationName, subtitle: "Set Name")
                         self.mapPins.append(pin)
-                       self.mapView.addAnnotation(pin)
+                        self.mapView.addAnnotation(pin)
                     }
                 }
             }
         }
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
