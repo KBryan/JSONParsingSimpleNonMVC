@@ -37,12 +37,12 @@ class ViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelega
             // get some data from the API
             if let dict = result.value as? Dictionary<String,AnyObject> {
                 print(dict)
-                if let routes = dict["locations"] as? NSArray
+                if let routes = dict[LOCATIONS] as? NSArray
                 {
                     let _ = routes.map { route  in
-                        guard let stationName = route["name"] as? String,
-                        let latitude = route["lat"] as? Double,
-                        let longitude = route["lng"]  as? Double else {
+                        guard let stationName = route[NAME] as? String,
+                        let latitude = route[LAT] as? Double,
+                        let longitude = route[LNG]  as? Double else {
                                 print("error")
                                 return
                         }
