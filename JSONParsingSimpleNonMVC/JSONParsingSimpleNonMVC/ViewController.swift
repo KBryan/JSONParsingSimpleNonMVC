@@ -32,8 +32,7 @@ class ViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelega
         self.locationManager.startUpdatingLocation()
         self.locationManager.requestWhenInUseAuthorization()
         self.mapView.showsUserLocation = true
-        
-      
+
         /// Alamofire API
         Alamofire.request(.GET, url!).responseJSON { (response) -> Void in
             // return the value of .Get Request
@@ -45,25 +44,22 @@ class ViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelega
             
                 {
                     for route in routes {
-                        if let name = route["name"] as? String  {
-                            stationName = name
-                          //  print(name)
+                          guard let name = route["name"] as? String,
+                                let lat = route["lat"] as? Double,
+                                let lng = route["lng"] as? Double else {
+                                print("error")
+                                return
                         }
-                        if let lat = route["lat"] as? Double {
-                            lati = lat
-                        }
-                        if let lng = route["lng"] as? Double {
-                            long = lng
-                        }
-                        //print("End of Data Set")
+
+                        stationName = name
+                        lati = lat
+                        long = lng
                         let pin = MapPin(coordinate:CLLocationCoordinate2D(latitude: lati, longitude: long) , title: stationName, subtitle: "Set Name")
                         self.mapPins.append(pin)
-                        self.mapView.addAnnotation(pin)
+                       self.mapView.addAnnotation(pin)
                     }
-
                 }
             }
-            
         }
     }
 

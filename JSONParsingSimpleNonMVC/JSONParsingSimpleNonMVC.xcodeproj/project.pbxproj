@@ -50,7 +50,7 @@
 		7837E5A91BF393BF00E693A1 /* JSONParsingSimpleNonMVCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONParsingSimpleNonMVCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7837E5AD1BF393BF00E693A1 /* JSONParsingSimpleNonMVCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParsingSimpleNonMVCUITests.swift; sourceTree = "<group>"; };
 		7837E5AF1BF393BF00E693A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7837E5BB1BF3944C00E693A1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7837E5BB1BF3944C00E693A1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 		7837E5BE1BF3A64F00E693A1 /* MapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
 		8752EF7AF5D96857332A2AFB /* Pods-JSONParsingSimpleNonMVC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSONParsingSimpleNonMVC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSONParsingSimpleNonMVC/Pods-JSONParsingSimpleNonMVC.debug.xcconfig"; sourceTree = "<group>"; };
 		9540A6C300117844A6A7AD70 /* Pods-JSONParsingSimpleNonMVC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSONParsingSimpleNonMVC.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSONParsingSimpleNonMVC/Pods-JSONParsingSimpleNonMVC.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,7 +86,6 @@
 		7837E5811BF393BF00E693A1 = {
 			isa = PBXGroup;
 			children = (
-				7837E5BB1BF3944C00E693A1 /* Constants.swift */,
 				7837E58C1BF393BF00E693A1 /* JSONParsingSimpleNonMVC */,
 				7837E5A11BF393BF00E693A1 /* JSONParsingSimpleNonMVCTests */,
 				7837E5AC1BF393BF00E693A1 /* JSONParsingSimpleNonMVCUITests */,
@@ -141,6 +140,7 @@
 		7837E5BD1BF3A61700E693A1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7837E5BB1BF3944C00E693A1 /* Constants.swift */,
 				7837E5BE1BF3A64F00E693A1 /* MapPin.swift */,
 			);
 			name = Model;
