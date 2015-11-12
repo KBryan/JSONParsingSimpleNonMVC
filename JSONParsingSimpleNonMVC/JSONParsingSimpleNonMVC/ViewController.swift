@@ -22,9 +22,6 @@ class ViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         let url = NSURL(string: API_URL)
-        var lati:Double = 0.0
-        var long:Double = 0.0
-        var stationName:String = ""
         // lacation manager code
         self.locationManager.delegate = self
         self.mapView.delegate = self
@@ -43,10 +40,13 @@ class ViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelega
                 if let routes = dict["locations"] as? NSArray
                 {
                     let _ = routes.map { route  in
-                        stationName = (route["name"] as? String)!
-                        lati = (route["lat"] as? Double)!
-                        long = (route["lng"]  as? Double)!
-                        let pin = MapPin(coordinate:CLLocationCoordinate2D(latitude: lati, longitude: long) , title: stationName, subtitle: "Set Name")
+                        guard let stationName = route["name"] as? String,
+                        let latitude = route["lat"] as? Double,
+                        let longitude = route["lng"]  as? Double else {
+                                print("error")
+                                return
+                        }
+                        let pin = MapPin(coordinate:CLLocationCoordinate2D(latitude: latitude, longitude: longitude) , title: stationName, subtitle: "Set Name")
                         self.mapPins.append(pin)
                         self.mapView.addAnnotation(pin)
                     }
